@@ -5,6 +5,21 @@ const requests = {
   post: (url, body) => axios.post(url, body),
 };
 
+const authorize = ({
+  default_avatar_id: defaultAvatarId,
+  display_name: displayName,
+}) => {
+  const avatarHtml = `<div class="avatar" style="background-image=url('https://avatars.mds.yandex.net/get-yapic/${defaultAvatarId}/islands-middle')"></div>`;
+  const nameHtml = `<div class="name">${displayName}</div>`;
+
+  document.getElementById("auth").innerHTML = `${avatarHtml}${nameHtml}`;
+};
+
+const fetchYandexData = (token) =>
+  requests.get(`https://login.yandex.ru/info?format=json&oauth_token=${token}`);
+
+const saveToken = (token) => localStorage.setItem("token", token);
+
 window.onload = () => {
   YaAuthSuggest.init(
     {
@@ -18,11 +33,13 @@ window.onload = () => {
     .then(async (data) => {
       console.log("Сообщение с токеном: ", data);
 
-      const result = await requests.get(
-        `https://login.yandex.ru/info?format=json&oauth_token=${data.access_token}`
-      );
+      saveToken(data.access_token);
+
+      const result = await fetchYandexData(data.access_token);
 
       console.log("Сообщение с ответом Яндекса: ", result);
+
+      authorize(result);
     })
     .catch((error) => console.log("Что-то пошло не так: ", error));
 };
