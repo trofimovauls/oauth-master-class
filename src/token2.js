@@ -1,3 +1,3 @@
 window.onload = () => {
-  YaSendSuggestToken("https://test.sso-test.kinopoisk.ru");
+  YaSendSuggestToken("https://oauth-master-class.vercel.app");
 };

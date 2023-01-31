@@ -8,11 +8,11 @@ const requests = {
 window.onload = () => {
   YaAuthSuggest.init(
     {
-      client_id: "c46f0c53093440c39f12eff95a9f2f93",
+      client_id: "f8c0fb137ddc4bd2acea1a1489b5ae1b",
       response_type: "token",
-      redirect_uri: "https://test.sso-test.kinopoisk.ru/suggest/token",
+      redirect_uri: "https://oauth-master-class.vercel.app/token2.html",
     },
-    "https://test.sso-test.kinopoisk.ru"
+    "https://oauth-master-class.vercel.app"
   )
     .then(({ handler }) => handler())
     .then((data) => {
