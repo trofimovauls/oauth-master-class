@@ -39,7 +39,7 @@ window.onload = () => {
 
       console.log("Сообщение с ответом Яндекса: ", result);
 
-      authorize(result);
+      authorize(result.data);
     })
     .catch((error) => console.log("Что-то пошло не так: ", error));
 };
