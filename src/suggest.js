@@ -12,7 +12,7 @@ const authorize = ({
 
 const fetchYandexData = (token) =>
   axios.get(`https://login.yandex.ru/info?format=json`, {
-    headers: { Authorization: `Oauth ${token}` },
+    headers: { Authorization: `${token}` },
   });
 
 window.onload = () => {
