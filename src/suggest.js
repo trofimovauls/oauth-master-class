@@ -1,10 +1,5 @@
 import axios from "axios";
 
-const requests = {
-  get: (url, headers) => axios.get(url, { headers }),
-  post: (url, body) => axios.post(url, body),
-};
-
 const authorize = ({
   default_avatar_id: defaultAvatarId,
   display_name: displayName,
@@ -16,9 +11,7 @@ const authorize = ({
 };
 
 const fetchYandexData = (token) =>
-  requests.get(`https://login.yandex.ru/info?format=json&oauth_token=${token}`);
-
-const saveToken = (token) => localStorage.setItem("token", token);
+  axios.get(`https://login.yandex.ru/info?format=json&oauth_token=${token}`);
 
 window.onload = () => {
   YaAuthSuggest.init(
@@ -32,8 +25,6 @@ window.onload = () => {
     .then(({ handler }) => handler())
     .then(async (data) => {
       console.log("Сообщение с токеном: ", data);
-
-      saveToken(data.access_token);
 
       const result = await fetchYandexData(data.access_token);
 
