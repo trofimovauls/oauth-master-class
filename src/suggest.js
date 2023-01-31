@@ -15,8 +15,17 @@ window.onload = () => {
     "https://oauth-master-class.vercel.app"
   )
     .then(({ handler }) => handler())
-    .then((data) => {
+    .then(async (data) => {
       console.log("Сообщение с токеном: ", data);
+
+      const result = await requests.get(
+        "https://login.yandex.ru/info?format=json",
+        {
+          Authorization: `OAuth ${data.access_token}`,
+        }
+      );
+
+      console.log("Сообщение с ответом Яндекса: ", result);
     })
     .catch((error) => console.log("Что-то пошло не так: ", error));
 };
