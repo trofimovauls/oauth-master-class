@@ -1,5 +1,10 @@
 import axios from "axios";
 
+const requests = {
+  get: (url, headers) => axios.get(url, { headers }),
+  post: (url, body) => axios.post(url, body),
+};
+
 window.onload = () => {
   YaAuthSuggest.init(
     {
@@ -10,6 +15,8 @@ window.onload = () => {
     "https://test.sso-test.kinopoisk.ru"
   )
     .then(({ handler }) => handler())
-    .then((data) => console.log("Сообщение с токеном: ", data))
+    .then((data) => {
+      console.log("Сообщение с токеном: ", data);
+    })
     .catch((error) => console.log("Что-то пошло не так: ", error));
 };
