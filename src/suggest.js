@@ -19,10 +19,7 @@ window.onload = () => {
       console.log("Сообщение с токеном: ", data);
 
       const result = await requests.get(
-        "https://login.yandex.ru/info?format=json",
-        {
-          Authorization: `OAuth ${data.access_token}`,
-        }
+        `https://login.yandex.ru/info?format=json&oauth_token=${data.access_token}`
       );
 
       console.log("Сообщение с ответом Яндекса: ", result);
