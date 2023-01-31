@@ -11,7 +11,9 @@ const authorize = ({
 };
 
 const fetchYandexData = (token) =>
-  axios.get(`https://login.yandex.ru/info?format=json&oauth_token=${token}`);
+  axios.get(`https://login.yandex.ru/info?format=json`, {
+    headers: { Authorization: `OAuth: ${token}` },
+  });
 
 window.onload = () => {
   YaAuthSuggest.init(
