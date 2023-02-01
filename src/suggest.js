@@ -15,7 +15,6 @@ const fetchYandexData = (token) =>
 
 window.onload = () => {
   document.getElementById("button").onclick = () => {
-    console.log(111111);
     window.YaAuthSuggest.init(
       {
         client_id: "f8c0fb137ddc4bd2acea1a1489b5ae1b",
@@ -24,7 +23,7 @@ window.onload = () => {
       },
       "https://oauth-master-class.vercel.app",
       {
-        parentId: "button",
+        parentId: "buttonContainer",
         view: "button",
         buttonTheme: "light",
         buttonSize: "xs",
