@@ -26,7 +26,13 @@ window.onload = () => {
       "https://oauth-master-class.vercel.app"
     )
       .then(({ handler }) => handler())
-      .then((data) => console.log("Сообщение с токеном: ", data))
+      .then(async (data) => {
+        const result = await fetchYandexData(data.access_token);
+
+        authorize(result);
+
+        console.log(data);
+      })
       .catch((error) => console.log("Что-то пошло не так: ", error));
   };
   document.getElementById("button").onclick = () => {
