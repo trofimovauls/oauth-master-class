@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const authorize = ({
   default_avatar_id: defaultAvatarId,
   display_name: displayName,
@@ -11,7 +9,9 @@ const authorize = ({
 };
 
 const fetchYandexData = (token) =>
-  axios.get(`https://login.yandex.ru/info?format=json&oauth_token=${token}`);
+  fetch(`https://login.yandex.ru/info?format=json&oauth_token=${token}`).then(
+    (res) => res.json()
+  );
 
 window.onload = () => {
   document.getElementById("suggest").onclick = () => {

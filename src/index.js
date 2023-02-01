@@ -1,5 +1,3 @@
-import axios from "axios";
-
 // Авторизуем пользователя, используя инфу о нем.
 const authorize = ({
   default_avatar_id: defaultAvatarId,
@@ -13,8 +11,15 @@ const authorize = ({
 
 // Делаем запрос за инфой о пользователе.
 const fetchYandexData = (token) =>
-  axios.get(`https://login.yandex.ru/info?format=json&oauth_token=${token}`);
+  fetch(`https://login.yandex.ru/info?format=json&oauth_token=${token}`).then(
+    (res) => res.json()
+  );
 
 window.onload = () => {
-  // TODO
+  document.getElementById("suggest").onclick = () => {
+    // TODO: suggest
+  };
+  document.getElementById("button").onclick = () => {
+    // TODO: button
+  };
 };
