@@ -18,3 +18,16 @@
 .button {
   margin-bottom: 8px;
 }
+
+.buttons {
+  display: flex;
+  margin-top: 8px;
+}
+
+#suggest {
+  margin-right: 8px;
+}
+
+.buttonsContainer {
+  margin-top: 8px;
+}
