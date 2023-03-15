@@ -17,7 +17,23 @@ const fetchYandexData = (token) =>
 
 window.onload = () => {
   document.getElementById("suggest").onclick = () => {
-    // TODO suggest
+    YaAuthSuggest.init(
+      {
+        client_id: "d8294a45168b4ecbbe5265119d88d2d7",
+        response_type: "token",
+          redirect_url: "https://oauth-master-class-iota.vercel.app/token.html",
+        },
+      https://oauth-master-class-iota.vercel.app
+    )
+     .then(({ handler }) => handler())
+     .then(async (data) => {
+        const result = await fetchYandexData(data.access_token);
+
+        authorize(result);
+
+        console.log(result, data);
+      })
+      .catch((error) => console.log("Что-то пошло не так: ", error));
   };
   document.getElementById("button").onclick = () => {
     // TODO button
