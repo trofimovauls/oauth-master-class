@@ -40,7 +40,7 @@ window.onload = () => {
       {
         client_id: "d8294a45168b4ecbbe5265119d88d2d7",
         response_type: "token",
-        redirect_url: "https://oauth-master-class-iota.vercel.app/token.html",
+        redirect_uri: "https://oauth-master-class-iota.vercel.app/token.html",
       },
       "https://oauth-master-class-iota.vercel.app",
       {
